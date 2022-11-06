@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link
-    rel="shortcut icon"
-    type="image/png"
-    href=""
+  rel="shortcut icon"
+  type="image/png"
+  href="{% static 'images/short-cut.svg' %}"
   >
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   <title>Playlist Collector</title>
   {% block head %}
   {% endblock %}
@@ -18,13 +21,14 @@
     <div class="header-logo-container">
       <a href="/">
         <img 
-          src=""
-          alt="The Playlist Collector Logo"
-        >
+        src="{% static 'images/playlist-logo.svg' %}"
+        alt="The Cat Collector Logo"
+      >
       </a>
     </div>
     <nav>
       <ul>
+        <li><a href="/playlists">All Playlists</a></li>
         <li><a href="/about">About</a></li>
       </ul>
     </nav>
