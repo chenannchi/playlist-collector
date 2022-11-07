@@ -22,17 +22,19 @@
 <section class="card-container">
   {% for playlist in playlists %}
     <div class="card">
-      <div class="card-content">
-        <div class="card-img-container">
-          <img 
-            src="{% static 'images/music.jpg' %}" 
-            alt="A skater boy cat"
-            style="{{ "width: 100%" }}"
-          >
+      <a href="/playlists/{{ playlist.id }}">
+        <div class="card-content">
+          <div class="card-img-container">
+            <img 
+              src="{% static 'images/music.jpg' %}" 
+              alt="A skater boy cat"
+              style="{{ "width: 100%" }}"
+            >
+          </div>
+          <h2 class="card-title">{{ playlist.name }}</h2>
+          <p><small>{{ playlist.description }}</small></p>
         </div>
-        <h2 class="card-title">{{ playlist.name }}</h2>
-        <p><small>{{ playlist.description }}</small></p>
-      </div>
+      </a>
     </div>
   {% endfor %}
 </section>
