@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Playlist
+from .forms import ReviewForm
 # Create your views here.
 
 # Define the home view
@@ -16,7 +17,8 @@ def playlists_index(request):
 
 def playlists_detail(request, playlist_id):
   playlist = Playlist.objects.get(id=playlist_id)
-  return render(request, 'playlists/detail.html', { 'playlist': playlist })
+  review_form = ReviewForm()
+  return render(request, 'playlists/detail.html', { 'playlist': playlist, "review_form":review_form })
 
 class PlaylistCreate(CreateView):
   model = Playlist
@@ -30,3 +32,15 @@ class playlistUpdate(UpdateView):
 class playlistDelete(DeleteView):
   model = Playlist
   success_url = '/playlists/'
+
+def add_review(request, playlist_id):
+  # create a ModelForm instance using the data in request.POST
+  form = ReviewForm(request.POST)
+  # validate the form
+  if form.is_valid():
+    # don't save the form to the db until it
+    # has the cat_id assigned
+    new_review = form.save(commit=False)
+    new_review.playlist_id = playlist_id
+    new_review.save()
+  return redirect('playlists_detail', playlist_id=playlist_id)

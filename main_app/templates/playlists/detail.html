@@ -27,5 +27,53 @@
     </div>
   </div>
 </section>
+<div class="reviews-song-container">
+  <section class="reviews">
+    <div class="subsection-title">
+      <h2>Reviews</h2>
+      <img 
+        src="{% static 'images/comment.png' %}" 
+        alt="A playlist bubble icon"
+      />
+    </div>
+    <h3>Add a Review</h3>
+    <form
+      action="{% url 'add_review' playlist.id %}" 
+      method="post" 
+      class="subsection-content"
+    >
+      {% csrf_token %}
+      {{ review_form.as_p }}
+      <button type="submit" class="btn submit">Add Review</button>
+    </form>
+    {% comment %} <h3>Reviews</h3> {% endcomment %}
+    {% if playlist.review_set.all.count %}
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Author</th>
+            <th>Rating</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for review in playlist.review_set.all %}
+            <tr>
+              <td>{{review.date}}</td>
+              <td>{{review.author}}</td>
+              <td>{{review.rating}}</td>
+              <td>{{review.comment}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+			<div class="subsection-content">
+        <p>{{playlist.name}} has no reviews yet!</p>
+      </div>
+    {% endif %}
+  </section>
+</div>
 
 {% endblock %}
