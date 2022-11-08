@@ -6,26 +6,29 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="page-header">
-  <h1>Add a Playlist</h1>
-  <img src="{% static 'images/blue-music.svg' %}" alt="A music icon."/>
-</div>
-{% comment %} 
-  Leaving the action empty makes the form post to the same url used to display it
-{% endcomment %}
-<form action="" method="post" class="form-container">
+  <div class="page-header">
+    {% if playlist %}
+      <h1>Edit {{ playlist.name }}</h1>
+    {% else %}
+      <h1>Add a Playlist</h1>
+    {% endif %}
+    <img src="{% static 'images/blue-music.svg' %}" alt="A music icon."/>
+  </div>
   {% comment %} 
-    Django requires the following for security purposes
+    Leaving the action empty makes the form post to the same url used to display it
   {% endcomment %}
-  {% csrf_token %}
-  <table>
-    {% comment %}
-      Render the inputs inside of <tr>s & <td>s
+  <form action="" method="post" class="form-container">
+    {% comment %} 
+      Django requires the following for security purposes
     {% endcomment %}
-    {{ form.as_table }}
-  </table>
-  <button type="submit" class="btn submit">Submit!</button>
-</form>
+    {% csrf_token %}
+    <table>
+      {% comment %}
+        Render the inputs inside of <tr>s & <td>s
+      {% endcomment %}
+      {{ form.as_table }}
+    </table>
+    <button type="submit" class="btn submit">Submit!</button>
+  </form>
 
 {% endblock %}

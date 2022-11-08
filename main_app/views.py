@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Playlist
 # Create your views here.
 
@@ -21,3 +21,12 @@ def playlists_detail(request, playlist_id):
 class PlaylistCreate(CreateView):
   model = Playlist
   fields = '__all__'
+
+class playlistUpdate(UpdateView):
+  model = Playlist
+  # Let's disallow the renaming of a playlist by excluding the name field!
+  fields = ['description']
+
+class playlistDelete(DeleteView):
+  model = Playlist
+  success_url = '/playlists/'
