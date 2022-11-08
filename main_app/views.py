@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Playlist
 # Create your views here.
 
@@ -16,3 +17,7 @@ def playlists_index(request):
 def playlists_detail(request, playlist_id):
   playlist = Playlist.objects.get(id=playlist_id)
   return render(request, 'playlists/detail.html', { 'playlist': playlist })
+
+class PlaylistCreate(CreateView):
+  model = Playlist
+  fields = '__all__'
