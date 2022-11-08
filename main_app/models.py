@@ -12,3 +12,14 @@ class Playlist(models.Model):
   def get_absolute_url(self):
     return reverse('playlists_detail', kwargs={'playlist_id': self.id})
 
+# Add new Feeding model below Cat model
+class Review(models.Model):
+  date = models.DateField(auto_now_add=True)
+  author = models.CharField(max_length=20)
+  comment = models.TextField(max_length=100)
+  playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
+  
+  def __str__(self):
+    return f"{self.author} left a comment({self.comment} on {self.date})."
+
+  
