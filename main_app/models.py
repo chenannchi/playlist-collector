@@ -17,10 +17,13 @@ class Playlist(models.Model):
     return reverse('playlists_detail', kwargs={'playlist_id': self.id})
 
   def average_rating(self):
-    total = 0
-    for review in self.review_set.all():
-      total+=review.rating
-    return f"{total / len(self.review_set.all()):.1f}"
+    if len(self.review_set.all()) > 0:
+      total = 0
+      for review in self.review_set.all():
+        total+=review.rating
+      return f"{total / len(self.review_set.all()):.1f}⭐"
+    else:
+      return ""
 
 # Add new Feeding model below Cat model
 class Review(models.Model):
