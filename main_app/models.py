@@ -39,8 +39,8 @@ class Review(models.Model):
 class Song(models.Model):
   title = models.CharField(max_length=100)
   singer = models.CharField(max_length=50)
-  composer = models.CharField(max_length=50)
-  album = models.CharField(max_length=50)
+  composer = models.CharField(max_length=50, default="-")
+  album = models.CharField(max_length=50, default="-")
 
   def __str__(self):
     return self.title

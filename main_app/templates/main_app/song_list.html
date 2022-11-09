@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/songs/song-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>All Songs in the playlist</h1>
+  {% comment %} <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
+  <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
+  <img src="{% static 'images/post.svg' %}" alt="A scratching post" />
+  <img src="{% static 'images/fish.svg' %}" alt="A fishy toy" /> {% endcomment %}
+</section>
+
+<section class="card-container">
+  {% for song in song_list %}
+  <div class="card">
+    <div class="card-bg"></div>
+    <a href="{% url 'songs_detail' song.id %}">
+      <div class="card-content">
+        <h2>{{ song.title }}</h2>
+        <h3>{{ song.singer }}</h3>
+        <div>Album:  {{ song.album }}</div>
+        <div>Composer:  {{ song.composer }}</div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
