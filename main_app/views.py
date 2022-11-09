@@ -55,3 +55,11 @@ class SongList(ListView):
 
 class SongDetail(DetailView):
   model = Song
+
+class SongUpdate(UpdateView):
+  model = Song
+  fields = ["title", "singer", "composer", "album"]
+
+class SongDelete(DeleteView):
+  model = Song
+  success_url = '/songs/'
