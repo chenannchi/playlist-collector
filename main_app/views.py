@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Playlist
+from .models import Playlist, Song
 from .forms import ReviewForm
 # Create your views here.
 
@@ -44,3 +44,7 @@ def add_review(request, playlist_id):
     new_review.playlist_id = playlist_id
     new_review.save()
   return redirect('playlists_detail', playlist_id=playlist_id)
+
+class SongCreate(CreateView):
+  model = Song
+  fields = '__all__'

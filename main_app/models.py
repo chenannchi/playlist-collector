@@ -35,4 +35,15 @@ class Review(models.Model):
 
   class Meta:
     ordering = ['-date']
-  
+
+class Song(models.Model):
+  title = models.CharField(max_length=100)
+  singer = models.CharField(max_length=50)
+  composer = models.CharField(max_length=50)
+  album = models.CharField(max_length=50)
+
+  def __str__(self):
+    return self.title
+
+  def get_absolute_url(self):
+    return reverse('songs_detail', kwargs={'pk': self.id})
