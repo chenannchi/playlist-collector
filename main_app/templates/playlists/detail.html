@@ -19,7 +19,7 @@
     >
   </div>
   <div class="playlist-details">
-    <h1>{{ playlist.name }}</h1>
+    <h1>{{ playlist.name }}<h3>{{ playlist.average_rating }}⭐</h3></h1>
     <p>{{ playlist.description }}</p>
     <div class="playlist-actions">
       <a href="{% url 'playlists_update' playlist.id %}" class="btn warn">Edit</a>
