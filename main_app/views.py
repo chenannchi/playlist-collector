@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from .models import Playlist, Song
 from .forms import ReviewForm
 # Create your views here.
@@ -76,3 +78,23 @@ def assoc_song(request, playlist_id, song_id):
   # Note that you can pass a toy's id instead of the whole object
   Playlist.objects.get(id=playlist_id).songs.add(song_id)
   return redirect('playlists_detail', playlist_id=playlist_id)
+
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    # This is how to create a 'user' form object
+    # that includes the data from the browser
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      # This will add the user to the database
+      user = form.save()
+      # This is how we log a user in
+      login(request, user)
+      return redirect('playlists_index')
+    else:
+      error_message = 'Invalid sign up - try again'
+  # A bad POST or a GET request, so render signup.html with an empty form
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'signup.html', context)
+  # Same as: return render(request, 'signup.html', {'form': form, 'error_message': error_message})
