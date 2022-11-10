@@ -29,11 +29,17 @@
     </div>
     <nav>
       <ul>
-        <li><a href="{% url 'playlists_index' %}">All Playlists</a></li>
-        <li><a href="{% url 'songs_index' %}">All Songs</a></li>
-        <li><a href="{% url 'Playlists_create' %}">Add a Playlist</a></li>
-        <li><a href="{% url 'songs_create' %}">Add a Song</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'playlists_index' %}">All Playlists</a></li>
+          <li><a href="{% url 'songs_index' %}">All Songs</a></li>
+          <li><a href="{% url 'Playlists_create' %}">Add a Playlist</a></li>
+          <li><a href="{% url 'songs_create' %}">Add a Song</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'logout' %}">Log out</a></li>
+        {% else %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'home' %}">Login</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>
