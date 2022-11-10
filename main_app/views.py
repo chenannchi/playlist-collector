@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from .models import Playlist, Song
 from .forms import ReviewForm
 # Create your views here.
@@ -15,10 +16,12 @@ class Home(LoginView):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def playlists_index(request):
   playlists = Playlist.objects.filter(user=request.user)
   return render(request, 'playlists/index.html',{'playlists':playlists})
 
+@login_required
 def playlists_detail(request, playlist_id):
   playlist = Playlist.objects.get(id=playlist_id)
   songs_playlist_doesnt_include = Song.objects.exclude(id__in = playlist.songs.all().values_list('id'))
@@ -44,6 +47,7 @@ class playlistDelete(DeleteView):
   model = Playlist
   success_url = '/playlists/'
 
+@login_required
 def add_review(request, playlist_id):
   # create a ModelForm instance using the data in request.POST
   form = ReviewForm(request.POST)
@@ -74,6 +78,7 @@ class SongDelete(DeleteView):
   model = Song
   success_url = '/songs/'
 
+@login_required
 def assoc_song(request, playlist_id, song_id):
   # Note that you can pass a toy's id instead of the whole object
   Playlist.objects.get(id=playlist_id).songs.add(song_id)
