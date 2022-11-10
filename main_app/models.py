@@ -6,9 +6,23 @@ RATINGS=(
   (5, 5),(4, 4),(3,3),(2, 2),(1, 1)
 )
 
+class Song(models.Model):
+  title = models.CharField(max_length=100)
+  singer = models.CharField(max_length=50)
+  composer = models.CharField(max_length=50, default="-")
+  album = models.CharField(max_length=50, default="-")
+
+  def __str__(self):
+    return self.title
+
+  def get_absolute_url(self):
+    return reverse('songs_detail', kwargs={'pk': self.id})
+
 class Playlist(models.Model):
   name = models.CharField(max_length=100)
   description = models.CharField(max_length=100)
+  songs = models.ManyToManyField(Song)
+
 
   def __str__(self):
     return self.name
@@ -39,14 +53,3 @@ class Review(models.Model):
   class Meta:
     ordering = ['-date']
 
-class Song(models.Model):
-  title = models.CharField(max_length=100)
-  singer = models.CharField(max_length=50)
-  composer = models.CharField(max_length=50, default="-")
-  album = models.CharField(max_length=50, default="-")
-
-  def __str__(self):
-    return self.title
-
-  def get_absolute_url(self):
-    return reverse('songs_detail', kwargs={'pk': self.id})

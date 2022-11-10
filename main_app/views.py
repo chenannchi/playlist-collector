@@ -18,12 +18,13 @@ def playlists_index(request):
 
 def playlists_detail(request, playlist_id):
   playlist = Playlist.objects.get(id=playlist_id)
+  songs_playlist_doesnt_include = Song.objects.exclude(id__in = playlist.songs.all().values_list('id'))
   review_form = ReviewForm()
-  return render(request, 'playlists/detail.html', { 'playlist': playlist, "review_form":review_form })
+  return render(request, 'playlists/detail.html', { 'playlist': playlist, "review_form":review_form,"songs":songs_playlist_doesnt_include })
 
 class PlaylistCreate(CreateView):
   model = Playlist
-  fields = '__all__'
+  fields = ["name", "description"]
 
 class playlistUpdate(UpdateView):
   model = Playlist
@@ -63,3 +64,8 @@ class SongUpdate(UpdateView):
 class SongDelete(DeleteView):
   model = Song
   success_url = '/songs/'
+
+def assoc_song(request, playlist_id, song_id):
+  # Note that you can pass a toy's id instead of the whole object
+  Playlist.objects.get(id=playlist_id).songs.add(song_id)
+  return redirect('playlists_detail', playlist_id=playlist_id)
