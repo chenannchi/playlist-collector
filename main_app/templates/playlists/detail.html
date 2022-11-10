@@ -93,6 +93,10 @@
             <a href="{% url 'songs_detail' song.id %}">
               <p><b>{{ song.title }}</b> ---- <b>{{ song.singer }}</b></p>
             </a>
+            <form action="{% url 'disassoc_song' playlist.id song.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn danger">-</button>
+            </form>
           </div>
         {% endfor %}
       {% else %}

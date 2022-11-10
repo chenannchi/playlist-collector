@@ -85,6 +85,13 @@ def assoc_song(request, playlist_id, song_id):
   Playlist.objects.get(id=playlist_id).songs.add(song_id)
   return redirect('playlists_detail', playlist_id=playlist_id)
 
+@login_required
+def disassoc_song(request, playlist_id, song_id):
+  # Note that you can pass a toy's id instead of the whole object
+  Playlist.objects.get(id=playlist_id).songs.remove(song_id)
+  return redirect('playlists_detail', playlist_id=playlist_id)
+
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':
