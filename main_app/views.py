@@ -27,6 +27,12 @@ class PlaylistCreate(CreateView):
   model = Playlist
   fields = ["name", "description"]
 
+  def form_valid(self, form):
+    # Assign the logged in user (self.request.user)
+    form.instance.user = self.request.user
+    # Let the CreateView do its job as usual
+    return super().form_valid(form)
+
 class playlistUpdate(UpdateView):
   model = Playlist
   # Let's disallow the renaming of a playlist by excluding the name field!
