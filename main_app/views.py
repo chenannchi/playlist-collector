@@ -16,7 +16,7 @@ def about(request):
   return render(request, 'about.html')
 
 def playlists_index(request):
-  playlists = Playlist.objects.all()
+  playlists = Playlist.objects.filter(user=request.user)
   return render(request, 'playlists/index.html',{'playlists':playlists})
 
 def playlists_detail(request, playlist_id):
