@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Playlist, Song
 from .forms import ReviewForm
 # Create your views here.
@@ -28,7 +29,7 @@ def playlists_detail(request, playlist_id):
   review_form = ReviewForm()
   return render(request, 'playlists/detail.html', { 'playlist': playlist, "review_form":review_form,"songs":songs_playlist_doesnt_include })
 
-class PlaylistCreate(CreateView):
+class PlaylistCreate(LoginRequiredMixin, CreateView):
   model = Playlist
   fields = ["name", "description"]
 
@@ -38,12 +39,12 @@ class PlaylistCreate(CreateView):
     # Let the CreateView do its job as usual
     return super().form_valid(form)
 
-class playlistUpdate(UpdateView):
+class playlistUpdate(LoginRequiredMixin, UpdateView):
   model = Playlist
   # Let's disallow the renaming of a playlist by excluding the name field!
   fields = ['description']
 
-class playlistDelete(DeleteView):
+class playlistDelete(LoginRequiredMixin, DeleteView):
   model = Playlist
   success_url = '/playlists/'
 
@@ -60,21 +61,21 @@ def add_review(request, playlist_id):
     new_review.save()
   return redirect('playlists_detail', playlist_id=playlist_id)
 
-class SongCreate(CreateView):
+class SongCreate(LoginRequiredMixin, CreateView):
   model = Song
   fields = '__all__'
 
-class SongList(ListView):
+class SongList(LoginRequiredMixin, ListView):
   model = Song
 
-class SongDetail(DetailView):
+class SongDetail(LoginRequiredMixin, DetailView):
   model = Song
 
-class SongUpdate(UpdateView):
+class SongUpdate(LoginRequiredMixin, UpdateView):
   model = Song
   fields = ["title", "singer", "composer", "album"]
 
-class SongDelete(DeleteView):
+class SongDelete(LoginRequiredMixin, DeleteView):
   model = Song
   success_url = '/songs/'
 
