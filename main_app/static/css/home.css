@@ -20,7 +20,7 @@ main > section {
 }
 
 .ml16 {
-  color: #402d2d;
+  color: var(--font-reg);
   padding: 40px 0;
   font-weight: 800;
   /* font-size: 1em; */
@@ -72,6 +72,8 @@ main > section {
   justify-content: center;
   align-items: center;
   width: 80%;
+  background-color: #1d3354;
+  color: white;
 }
 
 .login h1 {
@@ -112,10 +114,10 @@ main > section {
   }
 
   .login {
-    border: var(--borders);
+    /* border: var(--borders); */
     padding: 20px;
     border-radius: var(--card-border-radius);
-    box-shadow: var(--card-box-shadow);
+    /* box-shadow: var(--card-box-shadow); */
     width: 100%;
   }
 

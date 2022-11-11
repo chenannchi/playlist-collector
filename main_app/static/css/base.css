@@ -83,13 +83,14 @@ nav a {
   font-weight: 600;
   font-size: 16px;
   position: relative;
+  padding: 5px;
 }
 
 nav a:hover {
   color: var(--link-hover-color)
 }
 
-a::before {
+nav a::before {
   content: "";
   position: absolute;
   display: block;
@@ -102,7 +103,7 @@ a::before {
   transition: transform 0.3s ease;
 }
 
-a:hover::before {
+nav a:hover::before {
   transform: scaleX(1);
 }
 
@@ -122,6 +123,20 @@ nav li {
   padding: 10px 20px 0;
   max-width: 500px;
 } */
+
+.rotate {
+  animation: rotation 10s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 
 .page-header {
   display: flex;
