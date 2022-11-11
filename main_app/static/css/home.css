@@ -19,16 +19,37 @@ main > section {
   display: none;
 }
 
+.ml16 {
+  color: #402d2d;
+  padding: 40px 0;
+  font-weight: 800;
+  /* font-size: 1em; */
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  overflow: hidden;
+}
+
+.ml16 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
 .logo-container {
-  max-width: 375px;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .playlist-container {
   width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rotate {
-  animation: rotation 8s infinite linear;
+  animation: rotation 10s infinite linear;
 }
 
 @keyframes rotation {
@@ -38,6 +59,11 @@ main > section {
   to {
     transform: rotate(359deg);
   }
+}
+
+.app-name{
+  font-size: 20px;
+  text-align: center;
 }
 
 .login {
@@ -94,6 +120,6 @@ main > section {
   }
 
   .logo-container {
-    max-width: 520px;
+    max-width: 700px;
   }
 }
