@@ -41,3 +41,7 @@
   margin: 5px 0;
   font-size: var(--font-reg);
 }
+
+.card:hover{
+  background-color: #6e8898;
+}
