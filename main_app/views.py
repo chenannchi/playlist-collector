@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Playlist, Song
 from .forms import ReviewForm
+from django.db.models import Q
 # Create your views here.
 
 # Define the home view
@@ -19,7 +20,7 @@ def about(request):
 
 @login_required
 def playlists_index(request):
-  playlists = Playlist.objects.filter(user=request.user)
+  playlists = Playlist.objects.filter(Q(user=request.user) | Q(category="pb"))
   return render(request, 'playlists/index.html',{'playlists':playlists})
 
 @login_required
@@ -31,7 +32,7 @@ def playlists_detail(request, playlist_id):
 
 class PlaylistCreate(LoginRequiredMixin, CreateView):
   model = Playlist
-  fields = ["name", "description"]
+  fields = ["name", "description", "category"]
 
   def form_valid(self, form):
     # Assign the logged in user (self.request.user)

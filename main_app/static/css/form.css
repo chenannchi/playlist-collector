@@ -59,3 +59,7 @@ td > textarea {
 td > span{
   font-size: 15px;
 }
+
+select > option{
+  background-color: var(--nav-bg);
+}

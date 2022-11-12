@@ -7,6 +7,11 @@ RATINGS=(
   (5, 5),(4, 4),(3,3),(2, 2),(1, 1)
 )
 
+CATEGORY=(
+  ("pv","private"),
+  ("pb","public")
+)
+
 class Song(models.Model):
   title = models.CharField(max_length=100)
   singer = models.CharField(max_length=50)
@@ -22,6 +27,7 @@ class Song(models.Model):
 class Playlist(models.Model):
   name = models.CharField(max_length=100)
   description = models.CharField(max_length=100)
+  category = models.CharField(max_length=2, choices=CATEGORY, default=CATEGORY[0][0])
   songs = models.ManyToManyField(Song)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   
