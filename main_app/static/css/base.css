@@ -47,6 +47,7 @@ body {
   --font-l: 1.8rem;
   --font-reg: 1.6rem;
   --card-border-radius: 6px;
+  --color1:#1d3354;
 }
 
 header {
@@ -214,7 +215,7 @@ nav li {
   }
 
   main {
-    max-width: 1300px;
+    /* max-width: 1300px; */
     min-height: calc(100vh - 53px);
   }
 

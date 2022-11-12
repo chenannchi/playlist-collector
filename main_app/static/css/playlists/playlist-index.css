@@ -8,13 +8,18 @@
 .card {
   width: 275px;
   margin: 10px;
-  border: var(--borders);
-  box-shadow: var(--card-box-shadow);
+  /* border: var(--borders); */
+  /* box-shadow: var(--card-box-shadow); */
+  text-align: center;
+  background-color: var(--color1);
+  border-radius: 20px;
+  padding: 10px 15px;
 }
 
 .card-content {
   padding: 10px;
   width: 100%;
+  color:white;
 }
 
 .usr-img {
