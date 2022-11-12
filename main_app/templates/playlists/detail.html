@@ -19,7 +19,14 @@
     >
   </div>
   <div class="playlist-details">
-    <h1>{{ playlist.name }}<h3>{{ playlist.average_rating }}</h3></h1>
+    <h1>{{ playlist.name }}</h1>
+    <h2>
+      {% if playlist.user == user%}
+      Created by you
+      {% else %}
+      Created by {{ playlist.user }}</h2>
+      {% endif %}
+      <h3>{{ playlist.average_rating }}</h3>
     <p>{{ playlist.description }}</p>
     <div class="playlist-actions">
       <a href="{% url 'playlists_update' playlist.id %}" class="btn warn">Edit</a>
