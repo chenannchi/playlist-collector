@@ -97,14 +97,16 @@
 .reviews-song-container > section {
   width: 80%;
   min-width: 360px;
-  border: var(--borders);
+  /* border: var(--borders); */
   border-radius: var(--card-border-radius);
-  padding: 10px;
-  box-shadow: var(--card-box-shadow);
+  padding: 20px;
+  /* box-shadow: var(--card-box-shadow); */
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 20px;
+  background-color: var(--color1);
+
 }
 
 .subsection-title img {
@@ -158,9 +160,9 @@
   border-bottom: rgb(36, 116, 248) solid 2px;
 }
 
-.reviews tr:nth-child(even) {
-  background-color: #f3f3fd;
-}
+/* .reviews tr:nth-child(even) {
+  background-color: ;
+} */
 
 .song-container p {
   margin: 12px 0;
@@ -168,7 +170,7 @@
 
 .song-container a {
   text-decoration: none;
-  color: #111;
+  color: white;
 }
 
 .song-container .btn {
@@ -193,7 +195,7 @@
 
 @media only screen and (min-width: 768px) {
   .playlist-container {
-    padding: 35px 30px;
+    padding: 35px 40px;
     flex-direction: row;
     align-items: center;
     justify-content: start;
@@ -207,12 +209,13 @@
 
   .reviews-song-container {
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-start;
   }
 
   .reviews-song-container > section {
-    width: 45%;
+    width: 48%;
+    color: white;
   }
 }
 
