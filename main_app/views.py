@@ -59,6 +59,7 @@ def add_review(request, playlist_id):
     # has the cat_id assigned
     new_review = form.save(commit=False)
     new_review.playlist_id = playlist_id
+    new_review.author = request.user
     new_review.save()
   return redirect('playlists_detail', playlist_id=playlist_id)
 

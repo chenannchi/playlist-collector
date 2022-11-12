@@ -49,7 +49,7 @@ class Playlist(models.Model):
 # Add new Feeding model below Cat model
 class Review(models.Model):
   date = models.DateField(auto_now_add=True)
-  author = models.CharField(max_length=20)
+  author = models.ForeignKey(User, on_delete=models.CASCADE)
   comment = models.TextField(max_length=100)
   rating = models.IntegerField(choices=RATINGS, default=5)
   playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
