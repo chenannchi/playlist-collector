@@ -17,10 +17,16 @@
       <div class="info">{{ song.singer }}</div>
       <div class="info">Album:  {{ song.album }}</div>
       <div class="info">Composer:  {{ song.composer }}</div>
+      {%if song.user == user %}
+      <div>Created by you</div>
       <div>
         <a href="{% url 'songs_update' song.id %}" class="btn warn">Edit</a>
         <a href="{% url 'songs_delete' song.id %}" class="btn danger">Delete</a>
       </div>
+      {%else%}
+      <div>Created by {{song.user}}</div>
+      {% endif %}
+
     </div>
   </div>
 </div>

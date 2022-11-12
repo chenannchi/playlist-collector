@@ -17,6 +17,7 @@ class Song(models.Model):
   singer = models.CharField(max_length=50)
   composer = models.CharField(max_length=50, default="-")
   album = models.CharField(max_length=50, default="-")
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.title

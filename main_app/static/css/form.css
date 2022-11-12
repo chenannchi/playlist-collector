@@ -37,13 +37,14 @@ th {
 td {
   max-width: 60%;
   width: 200px;
+  color: black;
 }
 
 td > * {
   width: 100%;
   padding: 2px 4px;
   font-size: var(--font-l);
-  color: white;
+
 }
 
 td > textarea {
@@ -58,6 +59,7 @@ td > textarea {
 
 td > span{
   font-size: 15px;
+  color: white;
 }
 
 select > option{

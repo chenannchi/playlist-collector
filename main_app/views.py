@@ -65,7 +65,12 @@ def add_review(request, playlist_id):
 
 class SongCreate(LoginRequiredMixin, CreateView):
   model = Song
-  fields = '__all__'
+  fields = ['title', 'singer','composer','album']
+  def form_valid(self, form):
+    # Assign the logged in user (self.request.user)
+    form.instance.user = self.request.user
+    # Let the CreateView do its job as usual
+    return super().form_valid(form)
 
 class SongList(LoginRequiredMixin, ListView):
   model = Song

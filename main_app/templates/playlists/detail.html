@@ -28,10 +28,12 @@
       {% endif %}
       <h3>{{ playlist.average_rating }}</h3>
     <p>{{ playlist.description }}</p>
+    {% if playlist.user == user %}
     <div class="playlist-actions">
       <a href="{% url 'playlists_update' playlist.id %}" class="btn warn">Edit</a>
       <a href="{% url 'playlists_delete' playlist.id %}" class="btn danger">Delete</a>
     </div>
+    {%endif%}
   </div>
 </section>
 <div class="reviews-song-container">
@@ -84,9 +86,6 @@
   <section class="songs">
     <div class="subsection-title">
       <h2>songs</h2>
-      {% comment %} <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
-      <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
-      <img src="{% static 'images/fish.svg' %}" alt="A fishy song" /> {% endcomment %}
     </div>
     <h3>{{ playlist.name }}'s Songs</h3>
     <div class="subsection-content">
