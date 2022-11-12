@@ -164,7 +164,7 @@ nav li {
 }
 
 .btn:hover {
-  background-color: var(--button-bg-hover);
+  background-color: var(--color1);
 }
 
 .submit {

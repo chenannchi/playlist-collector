@@ -4,6 +4,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 40px;
+  height: 100%;
 }
 
 .playlist-img {
@@ -21,6 +23,10 @@
 }
 
 .playlist-actions {
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   margin-top: 20px;
 }
 
@@ -160,10 +166,6 @@
   border-bottom: rgb(36, 116, 248) solid 2px;
 }
 
-/* .reviews tr:nth-child(even) {
-  background-color: ;
-} */
-
 .song-container p {
   margin: 12px 0;
 }
@@ -182,12 +184,12 @@
   width: 100%;
 }
 
-#file-input {
+/* #file-input {
   overflow: hidden;
   position: absolute;
   width: 0.1px;
   height: 0.1px;
-}
+} */
 
 #file-name {
   margin-bottom: 10px;
@@ -195,14 +197,14 @@
 
 @media only screen and (min-width: 768px) {
   .playlist-container {
-    padding: 35px 40px;
+    padding: 25px 40px;
     flex-direction: row;
     align-items: center;
     justify-content: start;
   }
 
   .playlist-img {
-    width: 25%;
+    width: 70%;
     max-width: 250px;
     margin-right: 25px;
   }
