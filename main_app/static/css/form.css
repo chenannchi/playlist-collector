@@ -1,7 +1,21 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 90vh;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
+  max-width: 800px;
+  background-color: var(--color1);
+  /* border: 2px solid; */
+  padding: 20px 0;
+  border-radius: var(--card-border-radius);
+  margin-bottom: 20px;
 }
 
 table {
@@ -11,21 +25,25 @@ table {
 }
 
 th {
-  text-align: left;
-  padding: 6px 20px 0 0;
+  text-align: center;
+  padding: 5px 25px 5px 0;
   font-weight: normal;
   vertical-align: top;
-  font-size: var(--font-reg);
+  font-size: 20px;
+  color: white;
+  width: 50px;
 }
 
 td {
   max-width: 60%;
+  width: 200px;
 }
 
 td > * {
   width: 100%;
   padding: 2px 4px;
   font-size: var(--font-l);
+  color: white;
 }
 
 td > textarea {
@@ -36,4 +54,8 @@ td > textarea {
 .btn {
   align-self: flex-end;
   margin-right: 40px;
+}
+
+td > span{
+  font-size: 15px;
 }

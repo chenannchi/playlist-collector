@@ -25,7 +25,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
     'Helvetica Neue', sans-serif;
-  min-height: 100vh;
+  min-height: 90vh;
   /* --nav-bg: rgba(104, 197, 248, .7); */
   --nav-bg:#af9164;
   --nav-bg-ff: rgba(104, 197, 248, .9);
@@ -205,6 +205,14 @@ nav li {
   font-size: var(--font-reg);
 }
 
+.info{
+  font-size: 20px;
+}
+
+.title{
+  font-size: 25px;
+}
+
 @media only screen and (min-width: 768px) {
   header {
     position: sticky;
@@ -216,7 +224,7 @@ nav li {
 
   main {
     /* max-width: 1300px; */
-    min-height: calc(100vh - 53px);
+    min-height: 90vh;
   }
 
   /* nav,
@@ -268,7 +276,7 @@ nav li {
 
 @media only screen and (min-width: 1024px) {
   main {
-    min-height: calc(100vh - 55px);
+    min-height: 90vh;
   }
   
   header {

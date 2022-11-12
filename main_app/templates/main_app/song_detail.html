@@ -10,17 +10,19 @@
 {% endblock %}
 
 {% block content %}
-  
-<div class="card">
-  <div class="card-bg"></div>
-  <div class="card-content">
-    <h2>{{ song.title }}</h2>
-    <h3>{{ song.singer }}</h3>
-    <div>Album:  {{ song.album }}</div>
-    <div>Composer:  {{ song.composer }}</div>
+<div class="container">
+  <div class="card">
+    <div class="card-content">
+      <div class="title">{{ song.title }}</div>
+      <div class="info">{{ song.singer }}</div>
+      <div class="info">Album:  {{ song.album }}</div>
+      <div class="info">Composer:  {{ song.composer }}</div>
+      <div>
+        <a href="{% url 'songs_update' song.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'songs_delete' song.id %}" class="btn danger">Delete</a>
+      </div>
+    </div>
   </div>
 </div>
-<a href="{% url 'songs_update' song.id %}" class="btn warn">Edit</a>
-<a href="{% url 'songs_delete' song.id %}" class="btn danger">Delete</a>
 
 {% endblock %}
