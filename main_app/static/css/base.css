@@ -27,7 +27,7 @@ body {
     'Helvetica Neue', sans-serif;
   min-height: 100vh;
   /* --nav-bg: rgba(104, 197, 248, .7); */
-  --nav-bg:#6e8898;
+  --nav-bg:#af9164;
   --nav-bg-ff: rgba(104, 197, 248, .9);
   --borders: rgb(36, 116, 248) solid 2px;
   /* --text-color: rgb(17, 20, 17); */
@@ -137,6 +137,10 @@ nav li {
   }
 }
 
+.title{
+  font-size: 30px;
+  font-weight: bold;
+}
 
 .page-header {
   display: flex;

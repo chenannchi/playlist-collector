@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}"/>
+
+{% endblock %}
+
 
 {% block content %}
 
-<h1>About the Playlist Collector</h1>
-<hr />
-<p class="page-content">
-  Let us heal together by listening to music together!
-</p>
-
+<div class="page-container">
+  <img src="{% static "images/words.jpg" %}" alt="an image with words">
+  <div class="app-information">
+    <div class="title">About</div>
+    {% comment %} <hr /> {% endcomment %}
+    <p class="page-content">
+      Let's heal together by listening to music!
+    </p>
+  </div>
+</div>
 {% endblock %}
