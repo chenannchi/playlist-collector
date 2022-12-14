@@ -15,6 +15,9 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sono:wght@300;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   <title>Playlist Collector</title>
   {% block head %}
@@ -40,6 +43,7 @@
           <li><a href="{% url 'songs_create' %}">Add a Song</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'logout' %}">Log out</a></li>
+          <li><div>{{user}}</div></li>
         {% else %}
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'home' %}">Login</a></li>

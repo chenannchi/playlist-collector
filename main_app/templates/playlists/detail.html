@@ -10,130 +10,131 @@
 {% endblock %}
 
 {% block content %}
-
-<section class="playlist-container">
-  <div class="playlist-img">
-    <img 
-      src="{% static 'images/music.jpg' %}" 
-      alt="Some beautiful melodies!"
-    >
-  </div>
-  <div class="playlist-details">
-    <h1>{{ playlist.name }}</h1>
-    <h2>
-      {% if playlist.user == user%}
-      Created by you
-      {% else %}
-      Created by {{ playlist.user }}</h2>
-      {% endif %}
-      <h3>{{ playlist.average_rating }}</h3>
-    <p>{{ playlist.description }}</p>
-    {% if playlist.user == user %}
-    <div class="playlist-actions">
-      <a href="{% url 'playlists_update' playlist.id %}" class="btn warn">Edit</a>
-      <a href="{% url 'playlists_delete' playlist.id %}" class="btn danger">Delete</a>
-    </div>
-    {%endif%}
-  </div>
-</section>
-<div class="reviews-song-container">
-  <section class="reviews">
-    <div class="subsection-title">
-      <h2>Reviews</h2>
+<div class="pageContainer">
+  <section class="playlist-container">
+    <div class="playlist-img">
       <img 
-        src="{% static 'images/comment.png' %}" 
-        alt="A playlist bubble icon"
-      />
+        src="{% static 'images/music.jpg' %}" 
+        alt="Some beautiful melodies!"
+      >
     </div>
-    <h3>Add a Review</h3>
-    <form
-      action="{% url 'add_review' playlist.id %}" 
-      method="post" 
-      class="subsection-content"
-    >
-      {% csrf_token %}
-      {{ review_form.as_p }}
-      <button type="submit" class="btn submit">Add Review</button>
-    </form>
-    {% comment %} <h3>Reviews</h3> {% endcomment %}
-    {% if playlist.review_set.all.count %}
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Author</th>
-            <th>Rating</th>
-            <th>Comment</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for review in playlist.review_set.all %}
-            <tr>
-              <td>{{review.date}}</td>
-              <td>{{review.author}}</td>
-              <td>{{review.rating}}</td>
-              <td>{{review.comment}}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    {% else %}
-			<div class="subsection-content">
-        <p>{{playlist.name}} has no reviews yet!</p>
+    <div class="playlist-details">
+      <h1>{{ playlist.name }}</h1>
+      <h2>
+        {% if playlist.user == user%}
+        Created by you
+        {% else %}
+        Created by {{ playlist.user }}</h2>
+        {% endif %}
+        <h3>{{ playlist.average_rating }}</h3>
+      <p>{{ playlist.description }}</p>
+      {% if playlist.user == user %}
+      <div class="playlist-actions">
+        <a href="{% url 'playlists_update' playlist.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'playlists_delete' playlist.id %}" class="btn danger">Delete</a>
       </div>
-    {% endif %}
-  </section>
-  <section class="songs">
-    <div class="subsection-title">
-      <h2>songs</h2>
-    </div>
-    <h3>{{ playlist.name }}'s Songs</h3>
-    <div class="subsection-content">
-      {% if playlist.songs.count %}
-        {% for song in playlist.songs.all %}
-          <div class="song-container">
-            <div 
-              class="color-block"
-              style={{"background-color:brown"}}
-            ></div>
-            <a href="{% url 'songs_detail' song.id %}">
-              <p><b>{{ song.title }}</b> ---- <b>{{ song.singer }}</b></p>
-            </a>
-            <form action="{% url 'disassoc_song' playlist.id song.id %}" method="post">
-              {% csrf_token %}
-              <button type="submit" class="btn danger">-</button>
-            </form>
-          </div>
-        {% endfor %}
-      {% else %}
-        <p class="no-songs">{{playlist.name}} doesn't have any songs 😞</p>
-      {% endif %}
-    </div>
-    <h3>Available songs</h3>
-    <div class="subsection-content">
-      {% if songs.count %}
-        {% for song in songs.all %}
-          <div class="song-container">
-            <div 
-              class="color-block"
-              style="background-color: brown"
-            ></div>
-            <a href="{% url 'songs_detail' song.id %}">
-              <p><b>{{song.title}}</b> ---- <b>{{ song.singer }}</b></p>
-            </a>
-            <form action="{% url 'assoc_song' playlist.id song.id %}" method="post">
-              {% csrf_token %}
-              <button type="submit" class="btn submit">+</button>
-            </form>
-          </div>
-        {% endfor %}
-      {% else %}
-        <p class="all-songs">
-          <b>{{playlist.name}}</b> already includes all the available songs 🥳
-        </p>
-      {% endif %}
+      {%endif%}
     </div>
   </section>
+  <div class="reviews-song-container">
+    <section class="reviews">
+      <div class="subsection-title">
+        <h2>Reviews</h2>
+        <img 
+          src="{% static 'images/comment.png' %}" 
+          alt="A playlist bubble icon"
+        />
+      </div>
+      <h3>Add a Review</h3>
+      <form
+        action="{% url 'add_review' playlist.id %}" 
+        method="post" 
+        class="subsection-content"
+      >
+        {% csrf_token %}
+        {{ review_form.as_p }}
+        <button type="submit" class="btn submit">Add Review</button>
+      </form>
+      {% comment %} <h3>Reviews</h3> {% endcomment %}
+      {% if playlist.review_set.all.count %}
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Author</th>
+              <th>Rating</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for review in playlist.review_set.all %}
+              <tr>
+                <td>{{review.date}}</td>
+                <td>{{review.author}}</td>
+                <td>{{review.rating}}</td>
+                <td>{{review.comment}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <div class="subsection-content">
+          <p>{{playlist.name}} has no reviews yet!</p>
+        </div>
+      {% endif %}
+    </section>
+    <section class="songs">
+      <div class="subsection-title">
+        <h2>songs</h2>
+      </div>
+      <h3>{{ playlist.name }}'s Songs</h3>
+      <div class="subsection-content">
+        {% if playlist.songs.count %}
+          {% for song in playlist.songs.all %}
+            <div class="song-container">
+              <div 
+                class="color-block"
+                style={{"background-color:brown"}}
+              ></div>
+              <a href="{% url 'songs_detail' song.id %}">
+                <p><b>{{ song.title }}</b> ---- <b>{{ song.singer }}</b></p>
+              </a>
+              <form action="{% url 'disassoc_song' playlist.id song.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn danger">-</button>
+              </form>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="no-songs">{{playlist.name}} doesn't have any songs 😞</p>
+        {% endif %}
+      </div>
+      <h3>Available Songs</h3>
+      <div class="subsection-content">
+        {% if songs.count %}
+          {% for song in songs.all %}
+            <div class="song-container">
+              <div 
+                class="color-block"
+                style="background-color: brown"
+              ></div>
+              <a href="{% url 'songs_detail' song.id %}">
+                <p><b>{{song.title}}</b> ---- <b>{{ song.singer }}</b></p>
+              </a>
+              <form action="{% url 'assoc_song' playlist.id song.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn submit">+</button>
+              </form>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="all-songs">
+            <b>{{playlist.name}}</b> already includes all the available songs 🥳
+          </p>
+        {% endif %}
+      </div>
+    </section>
+  </div>
 </div>
 
 {% endblock %}

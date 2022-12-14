@@ -78,7 +78,8 @@ h2 {
   font-size: var(--font-xl);
 }
 
-nav a {
+nav a,
+nav div {
   text-decoration: none;
   color: var(--text-color);
   font-weight: 600;
