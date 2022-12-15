@@ -21,10 +21,12 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  
 }
 
 .card-content *{
   margin: 5px 0;
+  text-align: center;
 }
 
 .card > a {

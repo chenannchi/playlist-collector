@@ -92,17 +92,13 @@
         {% if playlist.songs.count %}
           {% for song in playlist.songs.all %}
             <div class="song-container">
-              <div 
-                class="color-block"
-                style={{"background-color:brown"}}
-              ></div>
-              <a href="{% url 'songs_detail' song.id %}">
-                <p><b>{{ song.title }}</b> ---- <b>{{ song.singer }}</b></p>
-              </a>
               <form action="{% url 'disassoc_song' playlist.id song.id %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn danger">-</button>
               </form>
+              <a href="{% url 'songs_detail' song.id %}">
+                <p><b>{{ song.title }}</b> ---- <b>{{ song.singer }}</b></p>
+              </a>
             </div>
           {% endfor %}
         {% else %}
@@ -114,17 +110,13 @@
         {% if songs.count %}
           {% for song in songs.all %}
             <div class="song-container">
-              <div 
-                class="color-block"
-                style="background-color: brown"
-              ></div>
-              <a href="{% url 'songs_detail' song.id %}">
-                <p><b>{{song.title}}</b> ---- <b>{{ song.singer }}</b></p>
-              </a>
               <form action="{% url 'assoc_song' playlist.id song.id %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn submit">+</button>
               </form>
+              <a href="{% url 'songs_detail' song.id %}">
+                <p><b>{{song.title}}</b> ---- <b>{{ song.singer }}</b></p>
+              </a>
             </div>
           {% endfor %}
         {% else %}
