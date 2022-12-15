@@ -124,7 +124,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 STATIC_URL = 'static/'
 LOGIN_REDIRECT_URL = 'playlists_index'
 LOGOUT_REDIRECT_URL = 'home'
