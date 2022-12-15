@@ -15,6 +15,8 @@ environ.Env.read_env()
 
 from pathlib import Path
 import os
+import django_heroku
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +31,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG') == 'True' 
 
-ALLOWED_HOSTS = ["web-production-90ae.up.railway.app"]
+ALLOWED_HOSTS = ["web-production-d698.up.railway.app"]
 
 
 # Application definition
@@ -136,5 +138,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-import django_heroku
+
 django_heroku.settings(locals())
