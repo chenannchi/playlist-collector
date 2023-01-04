@@ -94,7 +94,9 @@
             <div class="song-container">
               <form action="{% url 'disassoc_song' playlist.id song.id %}" method="post">
                 {% csrf_token %}
+                {% if playlist.user == user%}
                 <button type="submit" class="btn danger">-</button>
+                {% endif %}
               </form>
               <a href="{% url 'songs_detail' song.id %}">
                 <p><b>{{ song.title }}</b> ---- <b>{{ song.singer }}</b></p>
@@ -105,6 +107,7 @@
           <p class="no-songs">{{playlist.name}} doesn't have any songs 😞</p>
         {% endif %}
       </div>
+      {% if playlist.user == user%}
       <h3>Available Songs</h3>
       <div class="subsection-content">
         {% if songs.count %}
@@ -112,7 +115,9 @@
             <div class="song-container">
               <form action="{% url 'assoc_song' playlist.id song.id %}" method="post">
                 {% csrf_token %}
+                {% if playlist.user == user%}
                 <button type="submit" class="btn submit">+</button>
+                {% endif %}
               </form>
               <a href="{% url 'songs_detail' song.id %}">
                 <p><b>{{song.title}}</b> ---- <b>{{ song.singer }}</b></p>
@@ -125,6 +130,7 @@
           </p>
         {% endif %}
       </div>
+      {% endif %}
     </section>
   </div>
 </div>
